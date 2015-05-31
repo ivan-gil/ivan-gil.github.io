@@ -20,10 +20,10 @@ TouchMouseHandlers.prototype.down = function(event) {
 TouchMouseHandlers.prototype.move = function(event) {
 	swipe.swipeWrapper.style.transition = 200 + 'ms cubic-bezier(0,0,0.25,1)';
 	if(event.changeTouches) {
+		event.preventDefault;
 		swipe.partialSwipe(event.changedTouches[0].pageX - this.startX , this._carouselWidth);
 	}
 	else if (this._pressing) {
-		event.preventDefault;
 		swipe.partialSwipe(event.clientX - this.startX , this._carouselWidth);
 
 	}
@@ -35,6 +35,8 @@ TouchMouseHandlers.prototype.up = function(event) {
 	swipe.swipeWrapper.style.transition = 600 + 'ms cubic-bezier(0,0,0.25,1)';
 	var touch;
 	if(event.changeTouches) {
+
+		event.preventDefault();
 		touch = event.changedTouches[0];
 		if (this.startX - touch.pageX > 100) {
 				swipe.swipeLeft();
@@ -48,7 +50,6 @@ TouchMouseHandlers.prototype.up = function(event) {
 	}
 	else {
 
-		event.preventDefault();
 		if (this.startX - event.clientX > 100) {
 		swipe.swipeLeft();
 		} 
@@ -63,12 +64,12 @@ TouchMouseHandlers.prototype.up = function(event) {
 }
 
 var handlers = new TouchMouseHandlers();
-	
+
+window.addEventListener('mousedown', handlers.down);	
 window.addEventListener('touchstart', handlers.down);
-window.addEventListener('mousedown', handlers.down);
 
-window.addEventListener('touchmove', handlers.move);
 window.addEventListener('mousemove', handlers.move);
+window.addEventListener('touchmove', handlers.move);
 
-window.addEventListener('touchend', handlers.up);
 window.addEventListener('mouseup', handlers.up);
+window.addEventListener('touchend', handlers.up);

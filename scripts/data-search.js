@@ -9,7 +9,7 @@ DataManipulations.prototype.getData = function() {
 	var that = this;
 	var input = document.getElementsByTagName('input')[0];
 	var wrapperChildNodes = document.getElementsByClassName('wrapper')[0];
-	var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + input.value + '&order=relevance&maxResults=15&key=AIzaSyDJW9BNFNM3rYKzVnErm6_oZNfAKqZjDLQ&type=video' + this.pageToken;
+	var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + input.value + '&order=relevance&maxResults=5&key=AIzaSyDJW9BNFNM3rYKzVnErm6_oZNfAKqZjDLQ&type=video' + this.pageToken;
 	var xhr = new XMLHttpRequest();
 	if(this.pageToken) {
 		xhr.open('GET', url + this.pageToken, true);
