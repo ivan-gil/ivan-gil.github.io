@@ -63,6 +63,8 @@ var additionalSearch = function () {
 }
 var button = document.getElementById('search');
 button.addEventListener('click', buttonSearch);
+button.addEventListener('touchstart', buttonSearch);
+
 
 window.addEventListener('keydown', function(event) {
 		if (event.keyCode === 39) {

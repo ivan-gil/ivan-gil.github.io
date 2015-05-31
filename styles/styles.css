@@ -129,15 +129,4 @@ nav a:hover {
 		font-size: 14pt;
 	}
 }
-@media (max-width: 600px) {
-	.slide {
-		width: 100%;
-	}
-}
-@media screen 
-  and (-webkit-device-pixel-ratio: 3)  {
-	.container {
-		height: calc(100% / 3);
-		width: calc(100% / 3);
-	}
-}
+
