@@ -3,9 +3,16 @@ var SwipeWrapper = function() {
 	this._swipeLength = 0;
 	this._wrapperWidth = 0;
 	this._carouselWidth = 0;
-}
+};
 
 SwipeWrapper.prototype.pagSwipeLeft = function(id) {
+	if(nav.odd && ((+id + 1) == nav.numberOfSlides)) {
+		document.getElementsByClassName('loading')[0].style.display = 'block';
+		setTimeout( function(){
+        	document.getElementsByClassName('loading')[0].style.display = 'none';
+     		},2000)
+		dataMan.getData();
+	}
 	this._swipeLength = - id * 100;
 	this.swipeWrapper.style.WebkitTransform = 'translate3d(' + this._swipeLength + '%, 0, 0';
 
@@ -20,9 +27,8 @@ SwipeWrapper.prototype.swipeLeft = function() {
 	if(Math.abs(this._swipeLength / 100) >= nav.idOfAdditionalSearch) {
 		document.getElementsByClassName('loading')[0].style.display = 'block';
 		setTimeout( function(){
-         document.getElementsByClassName('loading')[0].style.display = 'none';
-
-     },2000)
+        	document.getElementsByClassName('loading')[0].style.display = 'none';
+     		},2000)
 		dataMan.getData();
 	}
 	this.swipeWrapper.style.WebkitTransform = 'translate3d(' + this._swipeLength + '%, 0, 0';
@@ -63,8 +69,6 @@ var additionalSearch = function () {
 }
 var button = document.getElementById('search');
 button.addEventListener('click', buttonSearch);
-button.addEventListener('touchstart', buttonSearch);
-
 
 window.addEventListener('keydown', function(event) {
 		if (event.keyCode === 39) {

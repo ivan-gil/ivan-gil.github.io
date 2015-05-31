@@ -9,7 +9,7 @@ DataManipulations.prototype.getData = function() {
 	var that = this;
 	var input = document.getElementsByTagName('input')[0];
 	var wrapperChildNodes = document.getElementsByClassName('wrapper')[0];
-	var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + input.value + '&order=relevance&maxResults=5&key=AIzaSyDJW9BNFNM3rYKzVnErm6_oZNfAKqZjDLQ&type=video' + this.pageToken;
+	var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + input.value + '&order=relevance&maxResults=15&key=AIzaSyDJW9BNFNM3rYKzVnErm6_oZNfAKqZjDLQ&type=video' + this.pageToken;
 	var xhr = new XMLHttpRequest();
 	if(this.pageToken) {
 		xhr.open('GET', url + this.pageToken, true);
@@ -39,7 +39,7 @@ DataManipulations.prototype.getData = function() {
 					youtubeLink: "https://www.youtube.com/watch?v=" + entries[i].id.videoId,
 					title: entries[i].snippet.title,
 					description: entries[i].snippet.description,
-					thumbnail: entries[i].snippet.thumbnails.high.url,
+					thumbnail: entries[i].snippet.thumbnails.medium.url,
 					publishedAt: date.toUTCString(),
 					viewCount: 0,
 					likeCount: 0
@@ -82,13 +82,13 @@ DataManipulations.prototype.renderElements = function () {
 	var wrapper = document.getElementsByClassName('wrapper')[0];
 	for (var i = 0; i < this.clipList.length; i++) {
 		var videoEl = document.createElement('figure');
-		var figImg = document.createElement('p');
+		var figImg = document.createElement('img');
 		var figCaption = document.createElement('figcaption');
 
 		figImg.classList.add('fig-img');
-		figImg.innerHTML = "<p class='title'>" + this.clipList[i].title + "</p><img src='"+ this.clipList[i].thumbnail +"' alt=''>";
+		figImg.src = this.clipList[i].thumbnail;
 
-		figCaption.innerHTML = "<p>likes:" + this.clipList[i].likeCount + " </p><p>View count: " + this.clipList[i].viewCount + "</p>";
+		figCaption.innerHTML = "<a href='" + this.clipList[i].youtubeLink +"'><p>title:" + this.clipList[i].title + " </p></a><p>Description:" + this.clipList[i].description + "</p><p>likes:" + this.clipList[i].likeCount + " </p><p>View count: " + this.clipList[i].viewCount + "</p>";
 		videoEl.classList.add('slide');
 		videoEl.appendChild(figImg);
 		videoEl.appendChild(figCaption);

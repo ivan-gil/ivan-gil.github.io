@@ -3,6 +3,7 @@ var Navigation = function() {
 	this.numberOfSlides;
 	this.carouselWith;
 	this.idOfAdditionalSearch;
+	this.odd = false;
 
 };
 
@@ -23,8 +24,9 @@ Navigation.prototype.countingSlides = function() {
 	this.carouselWith = document.getElementsByClassName('carousel')[0].offsetWidth;
 	var wrapperChildNodesNumber = document.getElementsByClassName('wrapper')[0].childNodes.length;
 	if(wrapperChildNodesNumber % this.itemsInSlides > 0) {
-		this.numberOfSlides = (wrapperChildNodesNumber / this.itemsInSlides);
-		this.idOfAdditionalSearch = wrapperChildNodesNumber / this.itemsInSlides - 1;
+		this.odd = true;
+		this.numberOfSlides = ~~(wrapperChildNodesNumber / this.itemsInSlides) + 1;
+		this.idOfAdditionalSearch = ~~(wrapperChildNodesNumber / this.itemsInSlides);
 	}
 	else {
 		this.numberOfSlides = wrapperChildNodesNumber / this.itemsInSlides;

@@ -1,14 +1,13 @@
 var TouchMouseHandlers = function() {
-	this.startX = 0;
-	this._pressing = false;
-	this._carouselWidth = 0;
 };
 
 TouchMouseHandlers.prototype.down = function(event) {
+	
 	this._pressing = true;
 	var touch;
-	if(event.changeTouches) {
-		touch = event.changeTouches[0];
+	event.preventDefault();
+	if(event.changedTouches) {
+		touch = event.changedTouches[0];
 		this.startX = touch.pageX;
 	}
 	else {
@@ -19,24 +18,21 @@ TouchMouseHandlers.prototype.down = function(event) {
 
 TouchMouseHandlers.prototype.move = function(event) {
 	swipe.swipeWrapper.style.transition = 200 + 'ms cubic-bezier(0,0,0.25,1)';
-	if(event.changeTouches) {
-		event.preventDefault;
+	if(event.changedTouches) {
 		swipe.partialSwipe(event.changedTouches[0].pageX - this.startX , this._carouselWidth);
 	}
 	else if (this._pressing) {
+		event.preventDefault;
 		swipe.partialSwipe(event.clientX - this.startX , this._carouselWidth);
 
 	}
 };
 
 TouchMouseHandlers.prototype.up = function(event) {
-	var that = this;
 	this._pressing = false;
 	swipe.swipeWrapper.style.transition = 600 + 'ms cubic-bezier(0,0,0.25,1)';
 	var touch;
-	if(event.changeTouches) {
-
-		event.preventDefault();
+	if(event.changedTouches) {
 		touch = event.changedTouches[0];
 		if (this.startX - touch.pageX > 100) {
 				swipe.swipeLeft();
@@ -50,6 +46,7 @@ TouchMouseHandlers.prototype.up = function(event) {
 	}
 	else {
 
+		// event.preventDefault();
 		if (this.startX - event.clientX > 100) {
 		swipe.swipeLeft();
 		} 
@@ -64,12 +61,13 @@ TouchMouseHandlers.prototype.up = function(event) {
 }
 
 var handlers = new TouchMouseHandlers();
+var carousel = document.getElementsByClassName('carousel')[0];
+	
+carousel.addEventListener('touchstart', handlers.down);
+carousel.addEventListener('mousedown', handlers.down);
 
-window.addEventListener('mousedown', handlers.down);	
-window.addEventListener('touchstart', handlers.down);
+carousel.addEventListener('touchmove', handlers.move);
+carousel.addEventListener('mousemove', handlers.move);
 
-window.addEventListener('mousemove', handlers.move);
-window.addEventListener('touchmove', handlers.move);
-
-window.addEventListener('mouseup', handlers.up);
-window.addEventListener('touchend', handlers.up);
+carousel.addEventListener('touchend', handlers.up);
+carousel.addEventListener('mouseup', handlers.up);
