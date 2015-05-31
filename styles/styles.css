@@ -1,0 +1,136 @@
+* {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	font-size: 0;
+}
+html, body {
+	height: 100%;
+}
+.container {
+	height: 100%;
+	width: 100%;
+	margin: 0 auto;
+}
+.search-bar {
+	width: 100%;
+}
+.search-bar :first-child {
+	display: inline-block;
+	width: calc(100% - 100px);
+	height: 40px;
+	font-size: 15px;
+	padding: 0 5px;
+}
+.search-bar :last-child {
+	display: inline-block;
+	width: 90px;
+	height: 40px;
+	padding: 0 15px;
+	font-size: 15px;
+}
+nav {
+	height: 80px;
+	box-sizing: border-box;
+	text-align: center;
+}
+nav ul {
+	max-width: calc((100% / 20) * 20);
+	display: inline-block;
+}
+nav a {	
+	width: 20px;
+	height: 20px;
+	border-radius: 10px;
+	background-color: grey;
+	color: grey;
+	display: inline-block;
+	font-size: 15px;
+	text-align: center;
+}
+nav a:hover {
+	background-color: #303030;
+	color: white;
+}
+.current {
+	background-color: #303030;
+	color: white;
+}
+.carousel {
+	width: 100%;
+	height: calc(100% - 120px);
+	background-color: black;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.wrapper {
+	position: relative;
+	height: 100%;
+	-webkit-transition: left 1s ease-out 0.5s;
+	-moz-transition: left 1s ease-out 0.5s;
+	-o-transition: left 1s ease-out 0.5s;
+	transition: left 1s ease-out 0.5s;
+	transform: translateX(0);
+}
+.slide {
+	display: inline-block;
+	vertical-align: top;
+	background-color: white;
+	padding: 10px;
+	height: 100%;
+	box-sizing: border-box;
+	width: calc(100% / 3);
+
+}
+.slide img {
+	width: 100%;
+}
+.slide figcaption p{
+	font-size: 15px;
+	color: black;
+}
+.fig-img {
+	position: relative;
+}
+.fig-img p{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 40px;
+	background-color: grey;
+	font-size: 15pt;
+	color: white;
+	overflow: hidden;
+}
+@media (max-width: 2000px) {
+	.slide {
+		width: 25%;
+	}
+}
+@media (max-width: 1500px) {
+	.slide {
+		width: calc(100% / 3);
+	}
+}
+@media (max-width: 900px) {
+	.slide {
+		padding: 5px;
+	}
+	.fig-img p {
+		font-size: 12pt;
+	}
+}
+@media (max-width: 800px) {
+	.slide {
+		width: 50%;
+		padding: 10px;
+	}
+	.fig-img p {
+		font-size: 14pt;
+	}
+}
+@media (max-width: 600px) {
+	.slide {
+		width: 100%;
+	}
+}
