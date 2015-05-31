@@ -30,7 +30,7 @@ html, body {
 	font-size: 15px;
 }
 nav {
-	height: 80px;
+	height: 40px;
 	box-sizing: border-box;
 	text-align: center;
 }
@@ -58,7 +58,7 @@ nav a:hover {
 }
 .carousel {
 	width: 100%;
-	height: calc(100% - 120px);
+	height: calc(100% - 80px);
 	background-color: black;
 	overflow: hidden;
 	white-space: nowrap;
