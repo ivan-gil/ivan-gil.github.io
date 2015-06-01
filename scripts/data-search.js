@@ -88,7 +88,7 @@ DataManipulations.prototype.renderElements = function () {
 		figImg.classList.add('fig-img');
 		figImg.src = this.clipList[i].thumbnail;
 
-		figCaption.innerHTML = "<a href='" + this.clipList[i].youtubeLink +"'><p>title:" + this.clipList[i].title + " </p></a><p>Description:" + this.clipList[i].description + "</p><p>likes:" + this.clipList[i].likeCount + " </p><p>View count: " + this.clipList[i].viewCount + "</p>";
+		figCaption.innerHTML = "<a href='" + this.clipList[i].youtubeLink +"'><p>title:" + this.clipList[i].title + " </p></a><p><b>Description:</b>" + this.clipList[i].description + "</p><p><b>likes:</b>" + this.clipList[i].likeCount + " </p><p><b>View count</b>: " + this.clipList[i].viewCount + "</p>";
 		videoEl.classList.add('slide');
 		videoEl.appendChild(figImg);
 		videoEl.appendChild(figCaption);

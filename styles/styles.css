@@ -1,8 +1,16 @@
+@font-face {
+	font-family: Locator;
+	src: url(../fonts/Locator-Regular.woff);
+}
+@font-face	{
+	font-family: Locator_Bold;
+	src: url(../fonts/Locator-Bold.woff);
+}
 * {
 	padding: 0;
 	margin: 0;
 	border: 0;
-	font-size: 0;
+
 }
 html, body {
 	height: 100%;
@@ -60,7 +68,7 @@ nav a:hover {
 .carousel {
 	width: 100%;
 	height: calc(100% - 80px);
-	background-color: black;
+	background-color: rgb(241, 241, 241);
 	overflow: hidden;
 	white-space: nowrap;
 }
@@ -74,32 +82,33 @@ nav a:hover {
 	transform: translateX(0);
 }
 .slide {
+	font-family: Locator ;
 	display: inline-block;
-	vertical-align: top;
-	background-color: white;
 	padding: 10px;
+	vertical-align: top;
+	background-color: rgb(241, 241, 241);
 	height: 100%;
+	word-break: break-all;
 	box-sizing: border-box;
-	width: calc(100% / 3);
-	word-break: break-all;
-
-}
-figcaption {
-	width: 100%;
-	word-break: break-all;
+	white-space: normal;
+	color: rgb(50, 50, 50);
 }
 .slide img {
 	width: 100%;
 }
-.slide figcaption *{
-	text-overflow: ellipsis;
-	margin: 10px 0;
-	font-size: 15pt;
-	color: black;
+.slide a {
+	text-decoration: none;
+	font-size: 20px;
+	color: rgb(109, 109, 109);
 }
-.slide figcaption > p {
-	font-size: 16pt;
-	font-weight: bold;
+.slide a:hover {
+	text-decoration: underline;
+}
+.slide a p{
+	
+}
+b {
+	margin-right: 10px;
 }
 
 @media (max-width: 2000px) {
